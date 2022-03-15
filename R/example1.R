@@ -53,12 +53,26 @@ check1 <- ymd_hms("2020-03-28 22:00:00", tz = "Etc/GMT-1")
 power3[check1 < date3 & date3 < check1 +dhours(6)]
 
 
-ggplot(power3[hour3==12 & minute3==0], aes(power1)) + geom_histogram(binwidth =  1, col="yellow") +
+h1 <- ggplot(power3[hour3==12 & minute3==0], aes(power1)) + geom_histogram(binwidth =  1, col="yellow") +
   scale_x_continuous("power consumption at 12 am (kW)")
+h1
 
-
-ggplot(power3[hour3==12 & minute3==0], aes(x=date3, y=power1, color=factor(wday3))) + geom_point() +
+s1 <- ggplot(power3[hour3==12 & minute3==0], aes(x=date3, y=power1, color=factor(wday3))) + geom_point() +
   scale_x_datetime("date (GMT-1)") +
   scale_y_continuous("power consumption at 12 am (kW)", limits=c(0,60)) +
   scale_color_discrete("wday")
+s1
+
+# define a directory for the figures and save the figures as png
+figures_dir <- file.path("..", "figures")
+if (!dir.exists(figures_dir)) {dir.create(figures_dir)}
+
+CairoPNG(file.path(figures_dir, "example1_histogram_12am.png"), width = 480, height = 360)
+h1
+dev.off()
+
+CairoPNG(file.path(figures_dir, "example1_point_12am.png"), width = 480, height = 360)
+s1
+dev.off()
+
 
