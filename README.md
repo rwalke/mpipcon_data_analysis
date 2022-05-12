@@ -18,9 +18,9 @@ A first example program
 
 The following histogram shows electricity consumption at 12 noon.
 
-![](figures/example1_histogram_12am.png)
+![](figures/example1_histogram_12pm.png)
 
 The next chart shows electricity consumption at 12 noon, grouped by day of the week.
 
-![](figures/example1_point_12am.png)
+![](figures/example1_point_12pm.png)
 
