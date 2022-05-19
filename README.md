@@ -24,3 +24,9 @@ The next chart shows electricity consumption at 12 noon, grouped by day of the w
 
 ![](figures/example1_point_12pm.png)
 
+In the subfolder R and Stata you will find more examples.
+
+Example 4 uses Stata to calculate the moving average to examine the cycles of 24 hours and 7 days.
+
+![](figures/example4_smoothA.png)
+
