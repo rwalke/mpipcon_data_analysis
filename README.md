@@ -30,3 +30,6 @@ Example 4 uses Stata to calculate the moving average to examine the cycles of 24
 
 ![](figures/example4_smoothA.png)
 
+In R example 5, boxplots are used to illustrate the variance of the weekly and monthly data.
+
+![](figures/example5_boxplotMonth2.png)
