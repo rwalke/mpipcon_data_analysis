@@ -17,8 +17,10 @@ require(vcd)
 require(Cairo)
 require(ggplot2)
 
+data_file_name <- "power_consumption_MPIDR_2020_2022.csv"
+
 power2 <- get_file_by_name(
-  filename = "power_consumption_MPIDR_2020_2022.csv",
+  filename = data_file_name,
   dataset = "doi:10.17617/3.DHIBFN",
   server = "edmond.mpdl.mpg.de",
   original = TRUE
@@ -28,10 +30,10 @@ power2 <- get_file_by_name(
 data_dir <- file.path("..","..", "data")
 if (!dir.exists(data_dir)) {dir.create(data_dir)}
 
-writeBin(power2, file.path(data_dir,"power_consumption_MPIDR_2020_2022.csv"))
+writeBin(power2, file.path(data_dir, data_file_name))
 
 # read the time series
-power3 <- fread(file.path(data_dir,"power_consumption_MPIDR_2020_2022.csv"),
+power3 <- fread(file.path(data_dir, data_file_name),
                 encoding = "UTF-8", sep=";", dec=",", header=FALSE, skip=4, col.names=c("date1","energy1"))
 # data shows energy consumption per 15 minutes (0.25 hours)
 # power is energy per unit of time 
@@ -58,6 +60,7 @@ check1 <- ymd_hms("2020-03-28 22:00:00", tz = "Etc/GMT-1")
 power3[check1 < date3 & date3 < check1 +dhours(6)]
 
 # create some boxplots
+tail(power3) # ignore the last data point (next year)
 
 p1MonthFacet <- ggplot(power3[year3<2023], aes(x=factor(month3), y=power1)) + geom_boxplot(fill="lightblue",outlier.size = 1.0) + facet_wrap(~year3) +
   scale_x_discrete("month") + scale_y_continuous("power consumption in kW")
