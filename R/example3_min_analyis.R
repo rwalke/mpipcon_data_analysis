@@ -6,7 +6,7 @@
 # find the daily power consumption minimum
 # do some illustrations
 # 
-# Rainer Walke, MPIDR Rostock, 2022
+# Rainer Walke, MPIDR Rostock, 2023
 # 
 require(data.table)
 require(lubridate)
@@ -17,8 +17,10 @@ require(vcd)
 require(Cairo)
 require(ggplot2)
 
+data_file_name <- "power_consumption_MPIDR_2020_2022.csv"
+
 power2 <- get_file_by_name(
-  filename = "power_consumption_MPIDR_2020_2021.csv",
+  filename = data_file_name,
   dataset = "doi:10.17617/3.DHIBFN",
   server = "edmond.mpdl.mpg.de",
   original = TRUE
@@ -28,10 +30,10 @@ power2 <- get_file_by_name(
 data_dir <- file.path("..","..", "data")
 if (!dir.exists(data_dir)) {dir.create(data_dir)}
 
-writeBin(power2, file.path(data_dir,"power_consumption_MPIDR_2020_2021.csv"))
+writeBin(power2, file.path(data_dir, data_file_name))
 
 # read the time series
-power3 <- fread(file.path(data_dir,"power_consumption_MPIDR_2020_2021.csv"),
+power3 <- fread(file.path(data_dir, data_file_name),
                 encoding = "UTF-8", sep=";", dec=",", header=FALSE, skip=4, col.names=c("date1","energy1"))
 # data shows energy consumption per 15 minutes (0.25 hours)
 # power is energy per unit of time 
@@ -94,7 +96,7 @@ p1min2
 figures_dir <- file.path("..", "figures")
 if (!dir.exists(figures_dir)) {dir.create(figures_dir)}
 
-CairoPNG(file.path(figures_dir, "example3_histogram_daily_min.png"), width = 480, height = 360)
+CairoPNG(file.path(figures_dir, "example3_histogram_daily_min.png"), width = 720, height = 360)
 p1min1
 dev.off()
 
