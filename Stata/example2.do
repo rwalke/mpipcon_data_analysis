@@ -5,14 +5,14 @@
 * clean the date/time information
 * create some example graphs
 *
-* Rainer Walke, MPIDR Rostock, 2022
+* Rainer Walke, MPIDR Rostock, 2023
 
 * data source
 * https://doi.org/10.17617/3.DHIBFN
-copy https://edmond.mpdl.mpg.de/api/access/datafile/181741 ../../data/power_consumption_MPIDR_2020_2021.csv, replace
+copy https://edmond.mpdl.mpg.de/api/access/datafile/211762 ../../data/power_consumption_MPIDR_2020_2022.csv, replace
 
 clear
-import delimited using ../../data/power_consumption_MPIDR_2020_2021.csv, delimiter(";")
+import delimited using ../../data/power_consumption_MPIDR_2020_2022.csv, delimiter(";")
 
 list in 1/6
 drop in 1/4
@@ -70,6 +70,6 @@ label value wday3 wday_names
 histogram power1 if hour3 == 12 & minute3 == 0, width(1) frequency xtitle(power consumption at 12 pm (noon, kW)) ytitle(count)
 
 * prepare a scatter plot for th power consumption at noon
-twoway (scatter power1 date3 if hour3 == 12 & minute3 ==0 & wday3 == 0, mcolor(%60) msize(tiny)) (scatter power1 date3 if hour3 == 12 & minute3 ==0 & wday3 == 1, mcolor(%60)  msize(tiny)) (scatter power1 date3 if hour3 == 12 & minute3 ==0 & wday3 == 2, mcolor(%60)  msize(tiny)) (scatter power1 date3 if hour3 == 12 & minute3 ==0 & wday3 == 3, mcolor(%60)  msize(tiny)) (scatter power1 date3 if hour3 == 12 & minute3 ==0 & wday3 == 4, mcolor(%60)  msize(tiny)) (scatter power1 date3 if hour3 == 12 & minute3 ==0 & wday3 == 5, mcolor(%60)  msize(tiny)) (scatter power1 date3 if hour3 == 12 & minute3 ==0 & wday3 == 6, mcolor(%60)  msize(tiny)), ytitle(power consumption at 12 pm (noon, kW)) xlabel(, labsize(6-pt) angle(horizontal) format(%tcCCYY-NN-DD)) legend(order(1 "Sun" 2 "Mon" 3 "Tue" 4 "Wed" 5 "Thu" 6 "Fri" 7 "Sat") position(9) ring(0) size(tiny))
+twoway (scatter power1 date3 if hour3 == 12 & minute3 ==0 & wday3 == 0, mcolor(%60) msize(tiny)) (scatter power1 date3 if hour3 == 12 & minute3 ==0 & wday3 == 1, mcolor(%60)  msize(tiny)) (scatter power1 date3 if hour3 == 12 & minute3 ==0 & wday3 == 2, mcolor(%60)  msize(tiny)) (scatter power1 date3 if hour3 == 12 & minute3 ==0 & wday3 == 3, mcolor(%60)  msize(tiny)) (scatter power1 date3 if hour3 == 12 & minute3 ==0 & wday3 == 4, mcolor(%60)  msize(tiny)) (scatter power1 date3 if hour3 == 12 & minute3 ==0 & wday3 == 5, mcolor(%60)  msize(tiny)) (scatter power1 date3 if hour3 == 12 & minute3 ==0 & wday3 == 6, mcolor(%60)  msize(tiny)), ytitle(power consumption at 12 pm (noon, kW)) xlabel(, labsize(6-pt) angle(horizontal) format(%tcCCYY-NN-DD)) legend(order(1 "Sun" 2 "Mon" 3 "Tue" 4 "Wed" 5 "Thu" 6 "Fri" 7 "Sat") position(7) ring(0) size(tiny))
 
 ****
