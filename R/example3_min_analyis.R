@@ -51,6 +51,11 @@ power3[, dst2 := dst(date2)]
 # duplicate the date and fix the time zone to GMT-1
 power3[, date3 := with_tz(date2, tz="Etc/GMT-1")]
 
+# resolve the time duplicates in the fall
+power3[duplicated(date3, fromLast=TRUE)]
+power3[duplicated(date3, fromLast=TRUE), date3 := date3 - dhours(1)]
+power3[duplicated(date3, fromLast=TRUE)]
+
 power3[, hour3 := hour(date3)]
 power3[, minute3 := minute(date3)]
 power3[, wday3 := wday(date3, label=TRUE)]
@@ -60,6 +65,8 @@ power3[, day3 := floor_date(date3, "day")]
 check1 <- ymd_hms("2020-03-28 22:00:00", tz = "Etc/GMT-1")
 power3[check1 < date3 & date3 < check1 +dhours(6)]
 
+check2 <- ymd_hms("2020-10-24 22:00:00", tz = "Etc/GMT-1")
+power3[check2 < date3 & date3 < check2 +dhours(6)]
 
 # start the analysis of minimum power consumption
 # compute the rolling mean over 4 hours (16 * 15 min)
