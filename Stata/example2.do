@@ -5,14 +5,14 @@
 * clean the date/time information
 * create some example graphs
 *
-* Rainer Walke, MPIDR Rostock, 2023
+* Rainer Walke, MPIDR Rostock, 2024
 
 * data source
 * https://doi.org/10.17617/3.DHIBFN
-copy https://edmond.mpdl.mpg.de/api/access/datafile/211762 ../../data/power_consumption_MPIDR_2020_2022.csv, replace
+copy https://edmond.mpg.de/api/access/datafile/248438 ../../data/power_consumption_MPIDR_2020_2023.csv, replace
 
 clear
-import delimited using ../../data/power_consumption_MPIDR_2020_2022.csv, delimiter(";")
+import delimited using ../../data/power_consumption_MPIDR_2020_2023.csv, delimiter(";")
 
 list in 1/6
 drop in 1/4
