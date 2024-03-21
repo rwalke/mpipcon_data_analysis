@@ -5,7 +5,7 @@
 # clean the date/time information
 # create some example graphs with ggplot2
 #
-# Rainer Walke, MPIDR Rostock, 2023
+# Rainer Walke, MPIDR Rostock, 2024
 # 
 require(data.table)
 require(lubridate)
@@ -16,7 +16,7 @@ require(vcd)
 require(Cairo)
 require(ggplot2)
 
-data_file_name <- "power_consumption_MPIDR_2020_2022.csv"
+data_file_name <- "power_consumption_MPIDR_2020_2023.csv"
 
 power2 <- get_file_by_name(
   filename = data_file_name,
