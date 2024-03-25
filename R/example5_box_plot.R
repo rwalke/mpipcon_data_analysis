@@ -94,6 +94,6 @@ CairoPNG(file.path(figures_dir, "example5_boxplotMonth2.png"), width = 720, heig
 p1MonthFill
 dev.off()
 
-CairoPNG(file.path(figures_dir, "example5_boxplotWeek.png"), width = 900, height = 360)
+CairoPNG(file.path(figures_dir, "example5_boxplotWeek.png"), width = 1440, height = 360)
 p1WeekFill
 dev.off()
