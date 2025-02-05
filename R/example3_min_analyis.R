@@ -6,7 +6,7 @@
 # find the daily power consumption minimum
 # do some illustrations
 # 
-# Rainer Walke, MPIDR Rostock, 2024
+# Rainer Walke, MPIDR Rostock, 2025
 # 
 require(data.table)
 require(lubridate)
@@ -17,7 +17,7 @@ require(vcd)
 require(Cairo)
 require(ggplot2)
 
-data_file_name <- "power_consumption_MPIDR_2020_2023.csv"
+data_file_name <- "power_consumption_MPIDR_2020_2024.csv"
 
 power2 <- get_file_by_name(
   filename = data_file_name,
