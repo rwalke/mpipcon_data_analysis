@@ -16,7 +16,7 @@ require(vcd)
 require(Cairo)
 require(ggplot2)
 
-data_file_name <- "power_consumption_MPIDR_2020_2024.csv"
+data_file_name <- "power_consumption_MPIDR_2020_2025.csv"
 
 power2 <- get_file_by_name(
   filename = data_file_name,
@@ -85,7 +85,7 @@ tail(power3) # ignore the last data point (next year)
 
 # sum the daily energy consumption
 
-(power4 <- power3[year3<2025, .(year3=year3[1], month3=month3[1], wday3=wday3[1], year_month=year_month[1], energy_per_day = sum(energy1)), by=day3])
+(power4 <- power3[year3<2026, .(year3=year3[1], month3=month3[1], wday3=wday3[1], year_month=year_month[1], energy_per_day = sum(energy1)), by=day3])
 
 h1 <- ggplot(power4, aes(x=energy_per_day, group=year_month, fill=as.factor(year_month)))
 

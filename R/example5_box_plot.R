@@ -6,7 +6,7 @@
 # compute weekly and monthly box plots
 # do some illustrations
 # 
-# Rainer Walke, MPIDR Rostock, 2025
+# Rainer Walke, MPIDR Rostock, 2026
 # 
 require(data.table)
 require(lubridate)
@@ -17,7 +17,7 @@ require(vcd)
 require(Cairo)
 require(ggplot2)
 
-data_file_name <- "power_consumption_MPIDR_2020_2024.csv"
+data_file_name <- "power_consumption_MPIDR_2020_2025.csv"
 
 power2 <- get_file_by_name(
   filename = data_file_name,
@@ -70,15 +70,15 @@ power3[check2 < date3 & date3 < check2 +dhours(6)]
 # create some boxplots
 tail(power3) # ignore the last data point (next year)
 
-p1MonthFacet <- ggplot(power3[year3<2025], aes(x=factor(month3), y=power1)) + geom_boxplot(fill="lightblue",outlier.size = 1.0) + facet_wrap(~year3) +
+p1MonthFacet <- ggplot(power3[year3<2026], aes(x=factor(month3), y=power1)) + geom_boxplot(fill="lightblue",outlier.size = 1.0) + facet_wrap(~year3) +
   scale_x_discrete("month") + scale_y_continuous("power consumption in kW")
 p1MonthFacet
 
-p1MonthFill <- ggplot(power3[year3<2025], aes(x=factor(month3), y=power1, fill=factor(year3))) + geom_boxplot(outlier.size = 1.0) +
+p1MonthFill <- ggplot(power3[year3<2026], aes(x=factor(month3), y=power1, fill=factor(year3))) + geom_boxplot(outlier.size = 1.0) +
   scale_x_discrete("month") + scale_y_continuous("power consumption in kW") + scale_fill_discrete("year")
 p1MonthFill
 
-p1WeekFill <- ggplot(power3[year3<2025], aes(x=factor(week3), y=power1, fill=factor(year3))) + geom_boxplot(outlier.size = 1.0) +
+p1WeekFill <- ggplot(power3[year3<2026], aes(x=factor(week3), y=power1, fill=factor(year3))) + geom_boxplot(outlier.size = 1.0) +
   scale_x_discrete("week", breaks=seq(1,52,2)) + scale_y_continuous("power consumption in kW") + scale_fill_discrete("year")
 p1WeekFill
 
