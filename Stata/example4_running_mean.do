@@ -6,14 +6,14 @@
 * define the data set as a time series
 * calculate the running mean over a day and over a week
 *
-* Rainer Walke, MPIDR Rostock, 2025
+* Rainer Walke, MPIDR Rostock, 2026
 
 * data source
 * https://doi.org/10.17617/3.DHIBFN
-copy https://edmond.mpg.de/api/access/datafile/248438 ../../data/power_consumption_MPIDR_2020_2024.csv, replace
+copy https://edmond.mpg.de/api/access/datafile/336195 ../../data/power_consumption_MPIDR_2020_2025.csv, replace
 
 clear
-import delimited using ../../data/power_consumption_MPIDR_2020_2024.csv, delimiter(";")
+import delimited using ../../data/power_consumption_MPIDR_2020_2025.csv, delimiter(";")
 
 list in 1/6
 drop in 1/4
@@ -123,7 +123,7 @@ label variable power1m2m21 "power consumption (residuals, kW)"
 * show some examplary data
 tsline smoothpower2 smoothpower21 power1m2m21 if tin(1mar2020 12:00,31mar2020 12:00), xlabel(, labsize(6-pt) angle(horizontal) format(%tcCCYY-NN-DD)) legend(cols(1) size(small) region(lpattern(blank))) name(smoothpower21a, replace)
 
-tsline smoothpower2 smoothpower21  if tin(15jan2020 12:00,15dec2024 12:00), xlabel(, labsize(6-pt) angle(horizontal) format(%tcCCYY-NN-DD)) legend(cols(1) size(small) region(lpattern(blank))) name(smoothpower21b, replace)
+tsline smoothpower2 smoothpower21  if tin(15jan2020 12:00,15dec2025 12:00), xlabel(, labsize(6-pt) angle(horizontal) format(%tcCCYY-NN-DD)) legend(cols(1) size(small) region(lpattern(blank))) name(smoothpower21b, replace)
 
 * ac power1
 * pac power1
